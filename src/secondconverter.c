@@ -14,9 +14,30 @@
  * if 1000000 seconds: 1 weeks, 4 days, 13 hours, 46 minutes and 40 seconds
 */
 
-#include <stdlib.h>
+#include <stdio.h>
+
+#define EXIT_SUCCESS 0
 
 int main(void)
 {
+  int input;
+  int seconds;
+  int minutes;
+  int hours;
+  int days;
+  int weeks;
+
+  printf("Enter a number of seconds: ");
+  scanf("%d", &input);
+
+  seconds = input % 60;
+  minutes = (input / 60) % 60;
+  hours = (input / 3600) % 24;
+  days = (input / (3600 * 24)) % 7;
+  weeks = (input / (3600 * 24 * 7)) % 52;
+
+  printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
+	 weeks, days, hours, minutes, seconds);
+  
   return EXIT_SUCCESS;
 }
