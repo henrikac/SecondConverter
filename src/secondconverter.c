@@ -17,6 +17,7 @@
 #include <stdio.h>
 
 #define EXIT_SUCCESS 0
+#define INVALID_INPUT -1
 
 int main(void)
 {
@@ -29,6 +30,12 @@ int main(void)
 
   printf("Enter a number of seconds: ");
   scanf("%d", &input);
+
+  if (input < 1)
+  {
+    printf("The entered number of seconds has to be greater than 0\n");
+    return INVALID_INPUT;
+  }
 
   seconds = input % 60;
   minutes = (input / 60) % 60;
