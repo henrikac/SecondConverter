@@ -29,8 +29,15 @@ int main(void)
   int weeks;
 
   printf("Enter a number of seconds: ");
-  scanf("%d", &input);
 
+  /* checks if the user enters a char or string */
+  if (scanf("%d", &input) == 0)
+  {
+    printf("\nInvalid input\n");
+    return INVALID_INPUT;
+  }
+
+  /* checks if entered number of seconds is greater than 0 */
   if (input < 1)
   {
     printf("The entered number of seconds has to be greater than 0\n");
