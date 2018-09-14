@@ -22,11 +22,6 @@
 int main(void)
 {
   int input;
-  int seconds;
-  int minutes;
-  int hours;
-  int days;
-  int weeks;
 
   printf("Enter a number of seconds: ");
 
@@ -44,14 +39,13 @@ int main(void)
     return INVALID_INPUT;
   }
 
-  seconds = input % 60;
-  minutes = (input / 60) % 60;
-  hours = (input / 3600) % 24;
-  days = (input / (3600 * 24)) % 7;
-  weeks = (input / (3600 * 24 * 7)) % 52;
-
   printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
-	 weeks, days, hours, minutes, seconds);
+	 (input / (3600 * 24 * 7)) % 52, /* weeks */
+	 (input / (3600 * 24)) % 7, /* days */
+	 (input / 3600) % 24, /* hours */
+	 (input / 60) % 60, /* minutes */
+	 input % 60 /* seconds */
+	 );
   
   return EXIT_SUCCESS;
 }
