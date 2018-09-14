@@ -2,7 +2,7 @@
  * Programmer: Henrik A. Christensen     Date Completed: still in progress
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
- * Prompts the user to enter a number of seconds
+ * Prompts the user for a number of seconds
  * Then convert the entered number of seconds to
  *   weeks, days, hours, minutes and seconds
  * and output the result to the user
@@ -17,24 +17,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SECONDS_PR_HOUR 3600
 #define SECONDS_PR_MINUTE 60
+#define SECONDS_PR_HOUR 3600
 #define HOURS_PR_DAY 24
 #define DAYS_PR_WEEK 7
 #define WEEKS_PR_YEAR 52
 #define INVALID_INPUT -1
 
-int main(void)
+int main(int argc, char *argv[])
 {
   int input;
 
-  printf("Enter a number of seconds: ");
-
-  /* checks if the user enters a char or string */
-  if (scanf("%d", &input) == 0)
+  /* checks if user enter seconds in the command line */
+  if (argc == 2)
   {
-    printf("\nInvalid input\n");
-    return INVALID_INPUT;
+    if (sscanf(argv[1], " %d", &input) == 0)
+    {
+      printf("\nInvalid input\n");
+      return INVALID_INPUT;
+    }
+  }
+  else
+  {
+
+    printf("Enter a number of seconds: ");
+
+    /* checks if the user enters a char or string */
+    if (scanf("%d", &input) == 0)
+    {
+      printf("\nInvalid input\n");
+      return INVALID_INPUT;
+    }
   }
 
   /* checks if entered number of seconds is greater than 0 */
