@@ -15,8 +15,13 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define EXIT_SUCCESS 0
+#define SECONDS_PR_HOUR 3600
+#define SECONDS_PR_MINUTE 60
+#define HOURS_PR_DAY 24
+#define DAYS_PR_WEEK 7
+#define WEEKS_PR_YEAR 52
 #define INVALID_INPUT -1
 
 int main(void)
@@ -40,11 +45,11 @@ int main(void)
   }
 
   printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
-	 (input / (3600 * 24 * 7)) % 52, /* weeks */
-	 (input / (3600 * 24)) % 7, /* days */
-	 (input / 3600) % 24, /* hours */
-	 (input / 60) % 60, /* minutes */
-	 input % 60 /* seconds */
+	 (input / (SECONDS_PR_HOUR * HOURS_PR_DAY * DAYS_PR_WEEK)) % WEEKS_PR_YEAR, /* weeks */
+	 (input / (SECONDS_PR_HOUR * HOURS_PR_DAY)) % DAYS_PR_WEEK,                 /* days */
+	 (input / SECONDS_PR_HOUR) % HOURS_PR_DAY,                                  /* hours */
+	 (input / SECONDS_PR_MINUTE) % SECONDS_PR_MINUTE,                           /* minutes */
+	 input % SECONDS_PR_MINUTE                                                  /* seconds */
 	 );
   
   return EXIT_SUCCESS;
