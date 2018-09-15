@@ -1,5 +1,5 @@
 /*
- * Programmer: Henrik A. Christensen     Date Completed: still in progress
+ * Programmer: Henrik A. Christensen     Date Completed: 15-09-2018
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
  * Prompts the user for a number of seconds
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
   /* checks if user enter seconds in the command line */
   if (argc == 2)
   {
-    if (sscanf(argv[1], " %d", &input) == 0)
+    if (sscanf(argv[1], " %d", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
@@ -39,11 +39,10 @@ int main(int argc, char *argv[])
   }
   else
   {
-
     printf("Enter a number of seconds: ");
 
     /* checks if the user enters a char or string */
-    if (scanf("%d", &input) == 0)
+    if (scanf("%d", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
