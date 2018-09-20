@@ -65,28 +65,18 @@ int main(int argc, char *argv[])
   weeks = (input / (SECONDS_PR_HOUR * HOURS_PR_DAY * DAYS_PR_WEEK)) % WEEKS_PR_YEAR;
 
   if (weeks > 0)
-  {
-    printf("%d weeks, %d days, %d hours, %d minutes and %d seconds",
+    printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
 	   weeks, days, hours, minutes, seconds);
-  }
   else if (days > 0)
-  {
-    printf("%d days, %d hours, %d minutes and %d seconds",
+    printf("\n%d days, %d hours, %d minutes and %d seconds\n",
 	   days, hours, minutes, seconds);
-  }
   else if (hours > 0)
-  {
-    printf("%d hours, %d minutes and %d seconds",
+    printf("\n%d hours, %d minutes and %d seconds\n",
 	   hours, minutes, seconds);
-  }
   else if (minutes > 0)
-  {
-    printf("%d minutes and %d seconds", minutes, seconds);
-  }
+    printf("\n%d minutes and %d seconds\n", minutes, seconds);
   else
-  {
-    printf("%d seconds", seconds);
-  }
+    printf("\n%d seconds\n", seconds);
   
   return EXIT_SUCCESS;
 }
