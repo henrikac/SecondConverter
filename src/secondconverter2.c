@@ -28,6 +28,7 @@
 int main(int argc, char *argv[])
 {
   int input;
+  int seconds, minutes, hours, days, weeks;
 
   /* checks if user enter seconds in the command line */
   if (argc == 2)
@@ -57,13 +58,35 @@ int main(int argc, char *argv[])
     return INVALID_INPUT;
   }
 
-  printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
-	 (input / (SECONDS_PR_HOUR * HOURS_PR_DAY * DAYS_PR_WEEK)) % WEEKS_PR_YEAR, /* weeks */
-	 (input / (SECONDS_PR_HOUR * HOURS_PR_DAY)) % DAYS_PR_WEEK,                 /* days */
-	 (input / SECONDS_PR_HOUR) % HOURS_PR_DAY,                                  /* hours */
-	 (input / SECONDS_PR_MINUTE) % SECONDS_PR_MINUTE,                           /* minutes */
-	 input % SECONDS_PR_MINUTE                                                  /* seconds */
-	 );
+  seconds = input % SECONDS_PR_MINUTE;
+  minutes = (input / SECONDS_PR_MINUTE) % SECONDS_PR_MINUTE;
+  hours = (input / SECONDS_PR_HOUR) % HOURS_PR_DAY;
+  days = (input / (SECONDS_PR_HOUR * HOURS_PR_DAY)) % DAYS_PR_WEEK;
+  weeks = (input / (SECONDS_PR_HOUR * HOURS_PR_DAY * DAYS_PR_WEEK)) % WEEKS_PR_YEAR;
+
+  if (weeks > 0)
+  {
+    printf("%d weeks, %d days, %d hours, %d minutes and %d seconds",
+	   weeks, days, hours, minutes, seconds);
+  }
+  else if (days > 0)
+  {
+    printf("%d days, %d hours, %d minutes and %d seconds",
+	   days, hours, minutes, seconds);
+  }
+  else if (hours > 0)
+  {
+    printf("%d hours, %d minutes and %d seconds",
+	   hours, minutes, seconds);
+  }
+  else if (minutes > 0)
+  {
+    printf("%d minutes and %d seconds", minutes, seconds);
+  }
+  else
+  {
+    printf("%d seconds", seconds);
+  }
   
   return EXIT_SUCCESS;
 }
