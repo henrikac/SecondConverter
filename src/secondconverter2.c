@@ -20,7 +20,6 @@
 
 #define SECONDS_PR_MINUTE 60
 #define SECONDS_PR_HOUR 3600
-#define HOURS_PR_DAY 24
 #define INVALID_INPUT -1
 
 int main(int argc, char *argv[])
@@ -58,7 +57,7 @@ int main(int argc, char *argv[])
 
   seconds = input % SECONDS_PR_MINUTE;
   minutes = (input / SECONDS_PR_MINUTE) % SECONDS_PR_MINUTE;
-  hours = (input / SECONDS_PR_HOUR) % HOURS_PR_DAY;
+  hours = input / SECONDS_PR_HOUR;
 
   if (hours > 0)
     printf("\n%u %s, %u %s and %u %s\n",
