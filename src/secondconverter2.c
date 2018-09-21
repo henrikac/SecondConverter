@@ -27,13 +27,13 @@
 
 int main(int argc, char *argv[])
 {
-  int input;
-  int seconds, minutes, hours, days, weeks;
+  unsigned int input;
+  unsigned int seconds, minutes, hours, days, weeks;
 
   /* checks if user enter seconds in the command line */
   if (argc == 2)
   {
-    if (sscanf(argv[1], " %d", &input) != 1)
+    if (sscanf(argv[1], " %u", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     printf("Enter a number of seconds: ");
 
     /* checks if the user enters a char or string */
-    if (scanf("%d", &input) != 1)
+    if (scanf(" %u", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
@@ -65,18 +65,18 @@ int main(int argc, char *argv[])
   weeks = (input / (SECONDS_PR_HOUR * HOURS_PR_DAY * DAYS_PR_WEEK)) % WEEKS_PR_YEAR;
 
   if (weeks > 0)
-    printf("\n%d weeks, %d days, %d hours, %d minutes and %d seconds\n",
+    printf("\n%u weeks, %u days, %u hours, %u minutes and %u seconds\n",
 	   weeks, days, hours, minutes, seconds);
   else if (days > 0)
-    printf("\n%d days, %d hours, %d minutes and %d seconds\n",
+    printf("\n%u days, %u hours, %u minutes and %u seconds\n",
 	   days, hours, minutes, seconds);
   else if (hours > 0)
-    printf("\n%d hours, %d minutes and %d seconds\n",
+    printf("\n%u hours, %u minutes and %u seconds\n",
 	   hours, minutes, seconds);
   else if (minutes > 0)
-    printf("\n%d minutes and %d seconds\n", minutes, seconds);
+    printf("\n%u minutes and %u seconds\n", minutes, seconds);
   else
-    printf("\n%d seconds\n", seconds);
+    printf("\n%u seconds\n", seconds);
   
   return EXIT_SUCCESS;
 }
