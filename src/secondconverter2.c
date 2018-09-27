@@ -1,5 +1,5 @@
 /*
- * Programmer: Henrik A. Christensen     Date Completed: in progress
+ * Programmer: Henrik A. Christensen     Date Completed: 27-09-2018
  * Instructor: Kurt Nørmark              Class:          Imperative Programming
  *
  * Prompts the user for a number of seconds
@@ -60,16 +60,11 @@ int main(int argc, char *argv[])
   hours = input / SECONDS_PR_HOUR;
 
   if (hours > 0)
-    printf("\n%u %s, %u %s and %u %s\n",
-	   hours, hours > 1 ? "hours" : "hour",
-	   minutes, minutes > 1 ? "minutes" : "minute",
-	   seconds, seconds > 1 ? "seconds" : "second");
-  else if (minutes > 0)
-    printf("\n%u %s and %u %s\n",
-	   minutes, minutes > 1 ? "minutes" : "minute",
-	   seconds, seconds > 1 ? "seconds" : "second");
-  else
-    printf("\n%u %s\n", seconds, seconds > 1 ? "seconds" : "second");
+    printf("%u %s ", hours, hours > 1 ? "hours" : "hour");
+  if (minutes > 0)
+    printf("%u %s ", minutes, minutes > 1 ? "minutes" : "minute");
+  if (seconds > 0) 
+    printf("%u %s\n", seconds, seconds > 1 ? "seconds" : "second");
   
   return EXIT_SUCCESS;
 }
