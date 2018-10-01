@@ -24,13 +24,13 @@
 
 int main(int argc, char *argv[])
 {
-  unsigned int input;
-  unsigned int seconds, minutes, hours;
+  int input;
+  int seconds, minutes, hours;
 
   /* checks if user enter seconds in the command line */
   if (argc == 2)
   {
-    if (sscanf(argv[1], " %u", &input) != 1)
+    if (sscanf(argv[1], " %d", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     printf("Enter a number of seconds: ");
 
     /* checks if the user enters a char or string */
-    if (scanf(" %u", &input) != 1)
+    if (scanf(" %d", &input) != 1)
     {
       printf("\nInvalid input\n");
       return INVALID_INPUT;
@@ -60,11 +60,11 @@ int main(int argc, char *argv[])
   hours = input / SECONDS_PR_HOUR;
 
   if (hours > 0)
-    printf("%u %s ", hours, hours > 1 ? "hours" : "hour");
+    printf("%d %s ", hours, hours > 1 ? "hours" : "hour");
   if (minutes > 0)
-    printf("%u %s ", minutes, minutes > 1 ? "minutes" : "minute");
+    printf("%d %s ", minutes, minutes > 1 ? "minutes" : "minute");
   if (seconds > 0) 
-    printf("%u %s\n", seconds, seconds > 1 ? "seconds" : "second");
+    printf("%d %s\n", seconds, seconds > 1 ? "seconds" : "second");
   
   return EXIT_SUCCESS;
 }
